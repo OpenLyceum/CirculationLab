@@ -21,24 +21,47 @@ import "./brand.js";
 
 import { onReadyToLaunch, PreferencesModel, Sim } from "scenerystack/sim";
 import { Tandem } from "scenerystack/tandem";
+import CirculationLabColors from "./CirculationLabColors.js";
+import { FluxThroughAGateScreen } from "./gate/FluxThroughAGateScreen.js";
+import { GreensTheoremByCancellationScreen } from "./green/GreensTheoremByCancellationScreen.js";
 import { StringManager } from "./i18n/StringManager.js";
-import { SimPreferencesModel } from "./preferences/SimPreferencesModel.js";
-import { SimPreferencesNode } from "./preferences/SimPreferencesNode.js";
-import SimColors from "./SimColors.js";
-import { SimScreen } from "./sim-screen/SimScreen.js";
+import { CirculationLabPreferencesModel } from "./preferences/CirculationLabPreferencesModel.js";
+import { CirculationLabPreferencesNode } from "./preferences/CirculationLabPreferencesNode.js";
+import { DivergenceVsCurlScreen } from "./probe/DivergenceVsCurlScreen.js";
+import { OneRimTwoSurfacesScreen } from "./stokes/OneRimTwoSurfacesScreen.js";
+import { SameDestinationDifferentWorkScreen } from "./work/SameDestinationDifferentWorkScreen.js";
 
 onReadyToLaunch(() => {
   const stringManager = StringManager.getInstance();
 
-  // Simulation-specific preferences; initial values come from simQueryParameters.
-  const simPreferences = new SimPreferencesModel(Tandem.ROOT.createTandem("preferences"));
+  // Simulation-specific preferences; initial values come from circulationLabQueryParameters.
+  const simPreferences = new CirculationLabPreferencesModel();
 
   const screens = [
-    new SimScreen({
-      // The screen name Property updates automatically when the locale changes
-      name: stringManager.getScreenNames().simStringProperty,
-      tandem: Tandem.ROOT.createTandem("simScreen"),
-      backgroundColorProperty: SimColors.backgroundColorProperty,
+    new SameDestinationDifferentWorkScreen({
+      name: stringManager.getScreenNames().workStringProperty,
+      tandem: Tandem.ROOT.createTandem("workScreen"),
+      backgroundColorProperty: CirculationLabColors.backgroundColorProperty,
+    }),
+    new FluxThroughAGateScreen({
+      name: stringManager.getScreenNames().gateStringProperty,
+      tandem: Tandem.ROOT.createTandem("gateScreen"),
+      backgroundColorProperty: CirculationLabColors.backgroundColorProperty,
+    }),
+    new DivergenceVsCurlScreen({
+      name: stringManager.getScreenNames().probeStringProperty,
+      tandem: Tandem.ROOT.createTandem("probeScreen"),
+      backgroundColorProperty: CirculationLabColors.backgroundColorProperty,
+    }),
+    new GreensTheoremByCancellationScreen({
+      name: stringManager.getScreenNames().greenStringProperty,
+      tandem: Tandem.ROOT.createTandem("greenScreen"),
+      backgroundColorProperty: CirculationLabColors.backgroundColorProperty,
+    }),
+    new OneRimTwoSurfacesScreen({
+      name: stringManager.getScreenNames().stokesStringProperty,
+      tandem: Tandem.ROOT.createTandem("stokesScreen"),
+      backgroundColorProperty: CirculationLabColors.backgroundColorProperty,
     }),
   ];
 
@@ -53,7 +76,7 @@ onReadyToLaunch(() => {
       simulationOptions: {
         customPreferences: [
           {
-            createContent: (tandem: Tandem) => new SimPreferencesNode(simPreferences, tandem),
+            createContent: (tandem: Tandem) => new CirculationLabPreferencesNode(simPreferences, tandem),
           },
         ],
       },

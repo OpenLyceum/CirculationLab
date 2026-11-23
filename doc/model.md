@@ -1,50 +1,9 @@
-# Model - SceneryStack Template
+# Model — Circulation Lab
 
-This document describes the model (the underlying physics, math, and behavior) for the simulation, in
-terms appropriate for an educator. It is the companion to
-[implementation-notes.md](./implementation-notes.md), which targets developers.
-
-> **Replace this entire file when forking.** The template ships with no domain physics — only the
-> section structure below. Real OpenLyceum sims (e.g. Stern Gerlach, Light Propagation) fill each
-> section with equations, ranges, and simplifications verified against their model code.
-
-## Overview
-
-*One or two paragraphs describing what the simulation models and the key ideas a student should take
-away. Write for a teacher, not a programmer — avoid code and class names.*
-
-**Example (do not ship):** "The simulation models a block sliding on a ramp with adjustable friction
-and angle. Students see how the component of gravity parallel to the surface sets acceleration and
-how static vs kinetic friction limits motion."
-
-The template's `SimModel` is an empty coordinator — replace it with real state and a `step(dt)` /
-`reset()` that implement your physics.
-
-## Quantities and units
-
-*List the primary modeled quantities, their symbols, units (SI where applicable), and control ranges.
-Mirror the ranges enforced in your `*Constants.ts` or model `Range` options.*
-
-| Quantity | Symbol | Units | Range |
-|---|---|---|---|
-| *(example)* time | t | s | 0 – ∞ |
-| *(example)* mass | m | kg | 0.1 – 5.0 |
-
-## Governing equations
-
-*State the equations or rules that drive the model, with a sentence explaining each. Use a smaller
-fixed time step than the screen default if the integration requires it; the model makes no assumption
-about frame rate.*
-
-**Example (do not ship):** For a damped spring, m·a = −k·x − b·v (+ gravity if applicable).
-
-## Simplifications and assumptions
-
-*Note anything intentionally idealized or omitted relative to the real-world phenomenon (e.g. no air
-resistance, point masses, instantaneous response), so educators can set expectations.*
-
-**Example (do not ship):** "Massless spring; linear damping only; motion confined to one dimension."
-
-## References
-
-*Optional: textbook sections, papers, or standards the model is based on.*
+| Screen | Mathematics |
+|---|---|
+| Same Destination, Different Work | The line segment and upper semicircle connect `(−1,0)` and `(1,0)`. Work in the gradient field uses the potential `x + (x² + y²)/2`. Work in `(−y/2, x/2)` is zero on the segment and `−π/2` on the completed left-to-right arc. |
+| Flux Through a Gate | The segment has length 1.4. Its selected normal is the left-hand normal of the directed segment, with an option to reverse it. The field is affine, so the midpoint normal component times length gives exact flux. |
+| Divergence vs. Curl | The square sides use outward normals for flux and counterclockwise tangents for circulation. Dividing each total by the area recovers the constant divergence or scalar curl of the chosen affine field. |
+| Green’s Theorem by Cancellation | The field `(−y/2, x/2)` has scalar curl 1. Adjacent cells traverse shared edges in opposite directions. The remaining boundary integral equals the signed area. |
+| One Rim, Two Surfaces | The radius-one disk and the cap `z = h(1 − x² − y²)` share a rim. The curl of `(−y/2, x/2, 0)` is vertical. The vertical component of the oriented graph area vector is ±1 for every cap height, giving total curl flux and rim circulation of ±π. |

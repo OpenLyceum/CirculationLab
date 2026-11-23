@@ -1,21 +1,98 @@
 {
-  "title": "Plantilla de Simulación",
+  "title": "Circulation Lab",
   "screens": {
-    "sim": "Simulación"
+    "work": "Trabajo",
+    "gate": "Flujo",
+    "probe": "Div. y rot.",
+    "green": "Green",
+    "stokes": "Stokes"
   },
   "a11y": {
-    "screenSummary": {
-      "playArea": "El área de juego muestra el contenido principal de la simulación.",
-      "controlArea": "El área de control tiene un botón Restablecer todo que devuelve la simulación a su estado inicial.",
-      "interactionHint": "Explora la simulación interactuando con sus controles."
+    "work": {
+      "screenSummary": {
+        "playArea": "Un segmento y un semicírculo superior conectan los mismos puntos.",
+        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
+        "interactionHint": "Avanza ambos marcadores y compara el trabajo acumulado."
+      },
+      "controls": {
+        "field": "Campo vectorial",
+        "gradient": "Campo gradiente",
+        "rotation": "Campo rotacional",
+        "progress": "Avance en el recorrido",
+        "reverseSegment": "Invertir el segmento",
+        "reverseArc": "Invertir el semicírculo"
+      },
+      "heading": "Mismo destino, distinto trabajo"
     },
-    "currentDetails": "La simulación está en su estado inicial.",
-    "controls": {
-      "exampleControl": "Control de ejemplo"
+    "gate": {
+      "screenSummary": {
+        "playArea": "Un segmento móvil está en un campo vectorial bidimensional.",
+        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
+        "interactionHint": "Gira el segmento, invierte la normal y compara el flujo con signo."
+      },
+      "controls": {
+        "field": "Campo vectorial",
+        "uniform": "Campo uniforme",
+        "source": "Campo fuente",
+        "x": "Coordenada x del centro",
+        "y": "Coordenada y del centro",
+        "angle": "Ángulo del segmento",
+        "flipped": "Invertir la normal"
+      },
+      "heading": "Flujo a través de un segmento"
+    },
+    "probe": {
+      "screenSummary": {
+        "playArea": "Una sonda cuadrada muestra las contribuciones con signo de sus cuatro lados.",
+        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
+        "interactionHint": "Compara el flujo neto y la circulación al cambiar el campo o el tamaño."
+      },
+      "controls": {
+        "field": "Campo vectorial",
+        "source": "Campo fuente",
+        "rotation": "Campo rotacional",
+        "shear": "Campo de cizalladura",
+        "x": "Coordenada x de la sonda",
+        "y": "Coordenada y de la sonda",
+        "size": "Lado del cuadrado",
+        "circulation": "Mostrar circulación en los lados"
+      },
+      "heading": "Divergencia y rotacional"
+    },
+    "green": {
+      "screenSummary": {
+        "playArea": "Una región en mosaico muestra cómo se cancelan las circulaciones opuestas en los lados compartidos.",
+        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
+        "interactionHint": "Avanza por las etapas y compara los dos totales."
+      },
+      "controls": {
+        "lShape": "Usar una región en L",
+        "divisions": "Celdas por unidad",
+        "stage": "Etapa de cancelación",
+        "flipped": "Invertir la orientación",
+        "cells": "Circulaciones de las celdas",
+        "pairs": "Cancelar pares compartidos",
+        "boundary": "Borde exterior"
+      },
+      "heading": "El teorema de Green por cancelación"
+    },
+    "stokes": {
+      "screenSummary": {
+        "playArea": "Un disco y un casquete curvo comparten un borde circular orientado.",
+        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
+        "interactionHint": "Cambia la altura e invierte a la vez el sentido del borde y la normal."
+      },
+      "controls": {
+        "height": "Altura del casquete",
+        "rotation": "Ángulo de visión",
+        "flipped": "Invertir la orientación",
+        "diskFlux": "Flujo del disco",
+        "capFlux": "Flujo del casquete"
+      },
+      "heading": "Un borde, dos superficies"
     }
   },
   "preferences": {
-    "title": "Simulación",
-    "exampleToggle": "Ejemplo de alternancia"
+    "title": "Simulación"
   }
 }

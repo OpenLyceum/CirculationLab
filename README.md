@@ -1,18 +1,18 @@
-# SceneryStack Template
+# Circulation Lab
 
 [![CI](../../actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
 
-A reusable SceneryStack simulation template for one or N screens, built with
-[SceneryStack](https://scenerystack.org/), Vite 8, TypeScript 7, and Biome 2.
+Explore work, flux, circulation, and the integral theorems of vector calculus.
 
 ## Features
 
-- SceneryStack scaffold with model/view separation (`rename` + `scaffold-screens` for one or N screens)
-- English, Spanish, and French localization via `StringManager`
+- **Same Destination, Different Work.** Compare signed work along two paths and reverse either path.
+- **Flux Through a Gate.** Move and rotate a segment and flip its normal to compare signed flux.
+- **Divergence vs. Curl.** Compare the sides and totals of a square probe in three fields.
+- **Green’s Theorem by Cancellation.** Cancel shared edges in a tiled region and inspect the boundary.
+- **One Rim, Two Surfaces.** Compare circulation along a fixed rim with curl flux through a disk and a cap.
+- Keyboard controls and live screen-reader summaries
 - Default and projector color profiles
-- Progressive Web App (installable, offline-capable)
-- Git hooks for Biome pre-commit checks
-- Shared GitHub Actions CI via `OpenLyceum/Baton`
 
 ## Quick Start
 
@@ -42,12 +42,9 @@ npm start        # dev server → http://localhost:5173
 | `npm run format` | Auto-format all files |
 | `npm run fix` | Lint + auto-fix |
 | `npm run icons` | Regenerate PNG icons from `public/icons/icon.svg` |
-| `npm run rename` | Sim-level fork/rename (`--id`, `--name`) |
-| `npm run scaffold-screens` | Emit N fleet-named screen packages from `sim-screen/` (`--shared-model` optional) |
 | `npm run release` | `check && lint && build && test`, then version patch + push tags |
 | `npm run clean` | Remove `dist/` |
 
-New sims start at `version: "0.0.0"` in `package.json`. Bump only when cutting a release (for example `npm version patch` and a matching git tag). Keep `name` in kebab-case; it is separate from the SceneryStack sim identifier in `src/init.ts`, which reads its `version` from `package.json`.
 
 ## Tech Stack
 

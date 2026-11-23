@@ -1,21 +1,98 @@
 {
-  "title": "SceneryStack Template",
+  "title": "Circulation Lab",
   "screens": {
-    "sim": "Sim"
+    "work": "Work",
+    "gate": "Gate",
+    "probe": "Div & Curl",
+    "green": "Green",
+    "stokes": "Stokes"
   },
   "a11y": {
-    "screenSummary": {
-      "playArea": "The play area shows the main simulation content.",
-      "controlArea": "The control area has a Reset All button that returns the simulation to its starting state.",
-      "interactionHint": "Explore the simulation by interacting with its controls."
+    "work": {
+      "screenSummary": {
+        "playArea": "A segment and an upper semicircle connect the same two points.",
+        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
+        "interactionHint": "Advance both markers and compare their accumulated work."
+      },
+      "controls": {
+        "field": "Vector field",
+        "gradient": "Gradient field",
+        "rotation": "Rotational field",
+        "progress": "Path progress",
+        "reverseSegment": "Reverse straight path",
+        "reverseArc": "Reverse semicircle"
+      },
+      "heading": "Same Destination, Different Work"
     },
-    "currentDetails": "The simulation is in its initial state.",
-    "controls": {
-      "exampleControl": "Example control"
+    "gate": {
+      "screenSummary": {
+        "playArea": "A movable gate lies in a two-dimensional vector field.",
+        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
+        "interactionHint": "Rotate the gate, then flip its normal and compare the signed flux."
+      },
+      "controls": {
+        "field": "Vector field",
+        "uniform": "Uniform field",
+        "source": "Source field",
+        "x": "Gate center x",
+        "y": "Gate center y",
+        "angle": "Gate angle",
+        "flipped": "Flip the normal"
+      },
+      "heading": "Flux Through a Gate"
+    },
+    "probe": {
+      "screenSummary": {
+        "playArea": "A square probe shows signed contributions from its four sides.",
+        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
+        "interactionHint": "Compare net flux and circulation as you change the field or probe size."
+      },
+      "controls": {
+        "field": "Vector field",
+        "source": "Source field",
+        "rotation": "Rotational field",
+        "shear": "Shear field",
+        "x": "Probe x",
+        "y": "Probe y",
+        "size": "Probe side length",
+        "circulation": "Show circulation on edges"
+      },
+      "heading": "Divergence vs. Curl"
+    },
+    "green": {
+      "screenSummary": {
+        "playArea": "A tiled region shows how opposing circulations on common edges cancel.",
+        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
+        "interactionHint": "Advance through the stages and compare the two totals."
+      },
+      "controls": {
+        "lShape": "Use an L-shaped region",
+        "divisions": "Cells per unit",
+        "stage": "Cancellation stage",
+        "flipped": "Reverse orientation",
+        "cells": "Cell circulations",
+        "pairs": "Cancel shared pairs",
+        "boundary": "Outer boundary"
+      },
+      "heading": "Green’s Theorem by Cancellation"
+    },
+    "stokes": {
+      "screenSummary": {
+        "playArea": "A disk and a curved cap share an oriented circular rim.",
+        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
+        "interactionHint": "Change the cap height, then reverse the rim direction and the surface normal together."
+      },
+      "controls": {
+        "height": "Cap height",
+        "rotation": "View angle",
+        "flipped": "Reverse orientation",
+        "diskFlux": "Disk flux",
+        "capFlux": "Cap flux"
+      },
+      "heading": "One Rim, Two Surfaces"
     }
   },
   "preferences": {
-    "title": "Simulation",
-    "exampleToggle": "Example Toggle"
+    "title": "Simulation"
   }
 }

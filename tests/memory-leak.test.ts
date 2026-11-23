@@ -9,11 +9,17 @@
  * tests below using forceGC().
  */
 
-// seed:leak-imports:start
-import { TimeModel } from "../src/common/TimeModel.js";
-// seed:leak-imports:end
+import { FluxThroughAGateModel } from "../src/gate/model/FluxThroughAGateModel.js";
+import { GreensTheoremByCancellationModel } from "../src/green/model/GreensTheoremByCancellationModel.js";
+import { DivergenceVsCurlModel } from "../src/probe/model/DivergenceVsCurlModel.js";
+import { OneRimTwoSurfacesModel } from "../src/stokes/model/OneRimTwoSurfacesModel.js";
+import { SameDestinationDifferentWorkModel } from "../src/work/model/SameDestinationDifferentWorkModel.js";
 import { describeDisposalLeaks } from "./helpers/memoryLeak.js";
 
-// seed:leak-cases:start
-describeDisposalLeaks([{ name: "TimeModel", create: () => new TimeModel(), idempotentDispose: true }]);
-// seed:leak-cases:end
+describeDisposalLeaks([
+  { name: "SameDestinationDifferentWorkModel", create: () => new SameDestinationDifferentWorkModel() },
+  { name: "FluxThroughAGateModel", create: () => new FluxThroughAGateModel() },
+  { name: "DivergenceVsCurlModel", create: () => new DivergenceVsCurlModel() },
+  { name: "GreensTheoremByCancellationModel", create: () => new GreensTheoremByCancellationModel() },
+  { name: "OneRimTwoSurfacesModel", create: () => new OneRimTwoSurfacesModel() },
+]);

@@ -12,15 +12,27 @@
 
 import { StringProperty } from "scenerystack/axon";
 import { Tandem } from "scenerystack/tandem";
-// seed:soak-imports:start
-import SimColors from "../../src/SimColors.js";
-import { SimScreen } from "../../src/sim-screen/SimScreen.js";
-// seed:soak-imports:end
+import CirculationLabColors from "../../src/CirculationLabColors.js";
+import { FluxThroughAGateScreen } from "../../src/gate/FluxThroughAGateScreen.js";
+import { GreensTheoremByCancellationScreen } from "../../src/green/GreensTheoremByCancellationScreen.js";
+import { DivergenceVsCurlScreen } from "../../src/probe/DivergenceVsCurlScreen.js";
+import { OneRimTwoSurfacesScreen } from "../../src/stokes/OneRimTwoSurfacesScreen.js";
+import { SameDestinationDifferentWorkScreen } from "../../src/work/SameDestinationDifferentWorkScreen.js";
 import { describeHeadlessSoak } from "../helpers/headlessSoak.js";
 
 describeHeadlessSoak({
-  // seed:soak-screens:start
-  screens: () => [new SimScreen({ name: new StringProperty("Sim"), tandem: Tandem.OPT_OUT })],
-  tracked: () => ({ SimColors }),
-  // seed:soak-screens:end
+  screens: () => [
+    new SameDestinationDifferentWorkScreen({
+      name: new StringProperty("Same Destination Different Work"),
+      tandem: Tandem.OPT_OUT,
+    }),
+    new FluxThroughAGateScreen({ name: new StringProperty("Flux Through a Gate"), tandem: Tandem.OPT_OUT }),
+    new DivergenceVsCurlScreen({ name: new StringProperty("Divergence vs. Curl"), tandem: Tandem.OPT_OUT }),
+    new GreensTheoremByCancellationScreen({
+      name: new StringProperty("Green’s Theorem by Cancellation"),
+      tandem: Tandem.OPT_OUT,
+    }),
+    new OneRimTwoSurfacesScreen({ name: new StringProperty("One Rim Two Surfaces"), tandem: Tandem.OPT_OUT }),
+  ],
+  tracked: () => ({ CirculationLabColors }),
 });

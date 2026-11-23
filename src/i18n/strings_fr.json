@@ -1,21 +1,98 @@
 {
-  "title": "Modèle de Simulation",
+  "title": "Circulation Lab",
   "screens": {
-    "sim": "Simulation"
+    "work": "Travail",
+    "gate": "Flux",
+    "probe": "Div. et rot.",
+    "green": "Green",
+    "stokes": "Stokes"
   },
   "a11y": {
-    "screenSummary": {
-      "playArea": "La zone de jeu affiche le contenu principal de la simulation.",
-      "controlArea": "La zone de contrôle comporte un bouton Tout réinitialiser qui ramène la simulation à son état initial.",
-      "interactionHint": "Explorez la simulation en interagissant avec ses commandes."
+    "work": {
+      "screenSummary": {
+        "playArea": "Un segment et un demi-cercle supérieur relient les deux mêmes points.",
+        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
+        "interactionHint": "Avancez les deux marqueurs et comparez le travail cumulé."
+      },
+      "controls": {
+        "field": "Champ vectoriel",
+        "gradient": "Champ de gradient",
+        "rotation": "Champ de rotation",
+        "progress": "Progression sur le trajet",
+        "reverseSegment": "Inverser le segment",
+        "reverseArc": "Inverser le demi-cercle"
+      },
+      "heading": "Même destination, travail différent"
     },
-    "currentDetails": "La simulation est dans son état initial.",
-    "controls": {
-      "exampleControl": "Contrôle d'exemple"
+    "gate": {
+      "screenSummary": {
+        "playArea": "Un segment mobile est plongé dans un champ vectoriel plan.",
+        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
+        "interactionHint": "Tournez le segment, inversez sa normale et comparez le flux signé."
+      },
+      "controls": {
+        "field": "Champ vectoriel",
+        "uniform": "Champ uniforme",
+        "source": "Champ de source",
+        "x": "Abscisse du centre",
+        "y": "Ordonnée du centre",
+        "angle": "Angle du segment",
+        "flipped": "Inverser la normale"
+      },
+      "heading": "Flux à travers un segment"
+    },
+    "probe": {
+      "screenSummary": {
+        "playArea": "Une sonde carrée montre les contributions signées de ses quatre côtés.",
+        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
+        "interactionHint": "Comparez le flux net et la circulation en variant le champ ou la taille."
+      },
+      "controls": {
+        "field": "Champ vectoriel",
+        "source": "Champ de source",
+        "rotation": "Champ de rotation",
+        "shear": "Champ de cisaillement",
+        "x": "Abscisse de la sonde",
+        "y": "Ordonnée de la sonde",
+        "size": "Côté du carré",
+        "circulation": "Afficher la circulation sur les côtés"
+      },
+      "heading": "Divergence et rotationnel"
+    },
+    "green": {
+      "screenSummary": {
+        "playArea": "Un domaine pavé montre comment les circulations opposées s’annulent sur les côtés communs.",
+        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
+        "interactionHint": "Parcourez les étapes et comparez les deux totaux."
+      },
+      "controls": {
+        "lShape": "Utiliser un domaine en L",
+        "divisions": "Cellules par unité",
+        "stage": "Étape d’annulation",
+        "flipped": "Inverser l’orientation",
+        "cells": "Circulations des cellules",
+        "pairs": "Annulation des côtés communs",
+        "boundary": "Bord extérieur"
+      },
+      "heading": "Le théorème de Green par annulation"
+    },
+    "stokes": {
+      "screenSummary": {
+        "playArea": "Un disque et une calotte courbe partagent un bord circulaire orienté.",
+        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
+        "interactionHint": "Variez la hauteur, puis inversez ensemble le sens du bord et la normale."
+      },
+      "controls": {
+        "height": "Hauteur de la calotte",
+        "rotation": "Angle de vue",
+        "flipped": "Inverser l’orientation",
+        "diskFlux": "Flux du disque",
+        "capFlux": "Flux de la calotte"
+      },
+      "heading": "Un bord, deux surfaces"
     }
   },
   "preferences": {
-    "title": "Simulation",
-    "exampleToggle": "Exemple de bascule"
+    "title": "Simulation"
   }
 }
