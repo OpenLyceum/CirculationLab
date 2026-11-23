@@ -53,7 +53,7 @@ export function gateGeometry(center: Point, degrees: number, flipped: boolean) {
 }
 
 // The midpoint rule is exact on a straight edge for every affine field in the lab.
-export function edgeContribution(field: Field, [[x, y], [a, b]]: Edge, flux = false): number {
+function edgeContribution(field: Field, [[x, y], [a, b]]: Edge, flux = false): number {
   const [p, q] = fieldVector(field, [(x + a) / 2, (y + b) / 2]);
   return flux ? p * (b - y) - q * (a - x) : p * (a - x) + q * (b - y);
 }

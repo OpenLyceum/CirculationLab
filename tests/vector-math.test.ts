@@ -3,7 +3,6 @@ import {
   boundaryCirculation,
   capNormal,
   capPoint,
-  edgeContribution,
   gateFlux,
   gateGeometry,
   pathPoint,
@@ -67,10 +66,15 @@ describe("integral theorems", () => {
         expect(boundaryCirculation(boundary, false)).toBeCloseTo(area, 12);
         expect(boundaryCirculation(boundary, true)).toBeCloseTo(-area, 12);
         for (const [a, b] of shared) {
-          expect(edgeContribution("halfRotation", [a, b]) + edgeContribution("halfRotation", [b, a])).toBeCloseTo(
-            0,
-            12,
-          );
+          expect(
+            boundaryCirculation(
+              [
+                [a, b],
+                [b, a],
+              ],
+              false,
+            ),
+          ).toBeCloseTo(0, 12);
         }
       }
     }
