@@ -89,7 +89,7 @@ export class DivergenceVsCurlScreenView extends LabView {
       });
       plotLabel(context, formula.value, [16, 25], colors.ink);
     });
-    addPointDrag(plot, plane, xProperty, yProperty);
+    addPointDrag(plot, plane, xProperty, yProperty, s.dragTargetStringProperty);
     super(
       {
         title: headingStringProperty,
