@@ -64,7 +64,7 @@ export class FluxThroughAGateScreenView extends LabView {
       plotLabel(context, "n", [tip[0] + 6, tip[1] - 5], colors.alternate);
       plotLabel(context, formula.value, [16, 25], colors.ink);
     });
-    addPointDrag(plot, plane, xProperty, yProperty);
+    addPointDrag(plot, plane, xProperty, yProperty, s.dragTargetStringProperty);
     super(
       {
         title: headingStringProperty,
