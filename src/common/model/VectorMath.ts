@@ -1,3 +1,5 @@
+import { DEFAULT_GATE_LENGTH, SIMPSON_PANELS } from "../../CirculationLabConstants.js";
+
 export type Point = readonly [number, number];
 export type Point3 = readonly [number, number, number];
 export type Edge = readonly [Point, Point];
@@ -81,7 +83,7 @@ export function isConservative(field: Field): boolean {
 }
 
 /** Composite Simpson's rule with an even number of panels. */
-function simpson(g: (t: number) => number, from: number, to: number, panels = 64): number {
+function simpson(g: (t: number) => number, from: number, to: number, panels = SIMPSON_PANELS): number {
   if (to === from) {
     return 0;
   }
@@ -164,8 +166,6 @@ export function pathBetween(kind: PathKind, a: Point, b: Point): Path {
       );
   }
 }
-
-const DEFAULT_GATE_LENGTH = 1.4;
 
 export function gateGeometry(center: Point, degrees: number, flipped: boolean, length = DEFAULT_GATE_LENGTH) {
   const theta = (degrees * Math.PI) / 180;

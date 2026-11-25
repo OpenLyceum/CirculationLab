@@ -1,5 +1,6 @@
 import { DragListener, Node, Rectangle } from "scenerystack/scenery";
 import type { ScreenViewOptions } from "scenerystack/sim";
+import { PLOT_HEIGHT, PLOT_WIDTH } from "../../CirculationLabConstants.js";
 import {
   arrow,
   checkbox,
@@ -108,7 +109,7 @@ export class OneRimTwoSurfacesScreenView extends LabView {
       plotLabel(context, "∇ × F = (0, 0, 1)", [16, 396], colors.ink);
     });
     // Dragging sideways on the view turns it; the view-angle slider owns the keyboard path.
-    const turn = new Rectangle(0, 0, 590, 420, { fill: "transparent", cursor: "ew-resize" });
+    const turn = new Rectangle(0, 0, PLOT_WIDTH, PLOT_HEIGHT, { fill: "transparent", cursor: "ew-resize" });
     let lastX = 0;
     const turnListener = new DragListener({
       start: (event) => {

@@ -1,11 +1,14 @@
 import { BooleanProperty, NumberProperty, StringUnionProperty } from "scenerystack/axon";
 import { Range } from "scenerystack/dot";
 import type { TModel } from "scenerystack/joist";
+import { DEFAULT_GATE_LENGTH, GATE_LENGTH_MAX, GATE_LENGTH_MIN } from "../../CirculationLabConstants.js";
 import { type Field, fields } from "../../common/model/VectorMath.js";
 
 export class FluxThroughAGateModel implements TModel {
   public readonly fieldProperty = new StringUnionProperty<Field>("uniform", { validValues: fields });
-  public readonly lengthProperty = new NumberProperty(1.4, { range: new Range(0.4, 2.4) });
+  public readonly lengthProperty = new NumberProperty(DEFAULT_GATE_LENGTH, {
+    range: new Range(GATE_LENGTH_MIN, GATE_LENGTH_MAX),
+  });
   public readonly xProperty = new NumberProperty(0, { range: new Range(-1.5, 1.5) });
   public readonly yProperty = new NumberProperty(0, { range: new Range(-1.5, 1.5) });
   public readonly angleProperty = new NumberProperty(0, { range: new Range(0, 360) });

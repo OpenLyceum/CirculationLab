@@ -1,10 +1,6 @@
+import { FIELD_LIMIT, FIELD_STEP, LONGEST_ARROW } from "../CirculationLabConstants.js";
 import { arrow, type Plane, type PlotColors } from "./LabView.js";
 import { type Edge, type Field, fieldLabel, fieldVector, type Point } from "./model/VectorMath.js";
-
-const FIELD_LIMIT = 2.5;
-const FIELD_STEP = 0.5;
-/** The longest arrow, in model units, drawn for the strongest vector in view. */
-const LONGEST_ARROW = 0.42;
 
 /** The largest |F| on the arrow grid, so arrow lengths can be proportional to magnitude. */
 export function strongest(field: Field): number {
