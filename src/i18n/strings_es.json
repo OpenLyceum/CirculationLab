@@ -10,86 +10,94 @@
   "a11y": {
     "work": {
       "screenSummary": {
-        "playArea": "Un segmento y un semicírculo superior conectan los mismos puntos.",
-        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
-        "interactionHint": "Avanza ambos marcadores y compara el trabajo acumulado."
+        "playArea": "Dos caminos de A a B en un campo vectorial: el segmento recto y un camino elegido, trazados hasta el avance t.",
+        "controlArea": "Elige el campo y el segundo camino, arrastra A o B y avanza por los caminos.",
+        "interactionHint": "Encuentra un campo en el que los dos caminos den trabajos distintos. ¿Qué dice la integral sobre el lazo?"
       },
       "controls": {
         "field": "Campo vectorial",
-        "gradient": "Campo gradiente",
-        "rotation": "Campo rotacional",
         "progress": "Avance en el recorrido",
-        "reverseSegment": "Invertir el segmento",
-        "reverseArc": "Invertir el semicírculo"
+        "path": "Segundo camino",
+        "segment": "Segmento recto",
+        "upperArc": "Semicírculo a la izquierda",
+        "lowerArc": "Semicírculo a la derecha",
+        "detour": "Subir, cruzar y bajar",
+        "loop": "Ida por 1, vuelta por 2",
+        "conservative": "∇ × F = 0 en todas partes, así que el trabajo solo depende de A y B.",
+        "notConservative": "∇ × F ≠ 0 aquí, así que el trabajo puede depender del camino."
       },
       "heading": "Mismo destino, distinto trabajo"
     },
     "gate": {
       "screenSummary": {
-        "playArea": "Un segmento móvil está en un campo vectorial bidimensional.",
-        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
-        "interactionHint": "Gira el segmento, invierte la normal y compara el flujo con signo."
+        "playArea": "Una puerta móvil en un campo vectorial, con su normal n y flechas que muestran F · n a lo largo de la puerta.",
+        "controlArea": "Elige el campo, mueve y gira la puerta, cambia su longitud o invierte su normal.",
+        "interactionHint": "¿Dónde atraviesa más el campo la puerta? Gírala hasta que el flujo sea cero."
       },
       "controls": {
         "field": "Campo vectorial",
-        "uniform": "Campo uniforme",
-        "source": "Campo fuente",
         "dragTarget": "Centro del segmento",
         "x": "Coordenada x del centro",
         "y": "Coordenada y del centro",
         "angle": "Ángulo del segmento",
-        "flipped": "Invertir la normal"
+        "flipped": "Invertir la normal",
+        "length": "Longitud de la puerta"
       },
       "heading": "Flujo a través de un segmento"
     },
     "probe": {
       "screenSummary": {
-        "playArea": "Una sonda cuadrada muestra las contribuciones con signo de sus cuatro lados.",
-        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
-        "interactionHint": "Compara el flujo neto y la circulación al cambiar el campo o el tamaño."
+        "playArea": "Una sonda cuadrada en un campo vectorial, con la contribución de cada lado a escala.",
+        "controlArea": "Elige el campo, mueve la sonda, redúcela y alterna entre flujo y circulación.",
+        "interactionHint": "Reduce el cuadrado en un campo cuya divergencia cambia. ¿A qué números tienden los cocientes?"
       },
       "controls": {
         "field": "Campo vectorial",
-        "source": "Campo fuente",
-        "rotation": "Campo rotacional",
-        "shear": "Campo de cizalladura",
         "dragTarget": "Sonda del campo",
         "x": "Coordenada x de la sonda",
         "y": "Coordenada y de la sonda",
         "size": "Lado del cuadrado",
-        "circulation": "Mostrar circulación en los lados"
+        "circulation": "Mostrar circulación en los lados",
+        "limit": "En el centro:"
       },
       "heading": "Divergencia y rotacional"
     },
     "green": {
       "screenSummary": {
-        "playArea": "Una región en mosaico muestra cómo se cancelan las circulaciones opuestas en los lados compartidos.",
-        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
-        "interactionHint": "Avanza por las etapas y compara los dos totales."
+        "playArea": "Una región en mosaico en un campo vectorial: la circulación de cada celda, luego la cancelación de los lados compartidos, luego el borde exterior.",
+        "controlArea": "Elige el campo y la región, fija el número de celdas y recorre las etapas.",
+        "interactionHint": "Compara la circulación en el borde con la integral del rotacional. ¿Por qué no cuentan los lados interiores?"
       },
       "controls": {
         "lShape": "Usar una región en L",
         "divisions": "Celdas por unidad",
-        "stage": "Etapa de cancelación",
         "flipped": "Invertir la orientación",
         "cells": "Circulaciones de las celdas",
         "pairs": "Cancelar pares compartidos",
-        "boundary": "Borde exterior"
+        "boundary": "Borde exterior",
+        "field": "Campo vectorial",
+        "back": "Atrás",
+        "next": "Siguiente",
+        "cellSum": "Suma de las circulaciones de las celdas"
       },
       "heading": "El teorema de Green por cancelación"
     },
     "stokes": {
       "screenSummary": {
-        "playArea": "Un disco y un casquete curvo comparten un borde circular orientado.",
-        "controlArea": "Usa los controles deslizantes y los botones para cambiar el ejemplo. Reiniciar restaura el estado inicial.",
-        "interactionHint": "Cambia la altura e invierte a la vez el sentido del borde y la normal."
+        "playArea": "Un disco y un casquete elegido comparten un borde circular orientado; flechas del rotacional se alzan sobre el casquete.",
+        "controlArea": "Elige la superficie, cambia su altura, gira la vista o invierte la orientación.",
+        "interactionHint": "Cambia la forma y la altura de la superficie. ¿Cambia el flujo del rotacional?"
       },
       "controls": {
         "height": "Altura del casquete",
         "rotation": "Ángulo de visión",
         "flipped": "Invertir la orientación",
         "diskFlux": "Flujo del disco",
-        "capFlux": "Flujo del casquete"
+        "capFlux": "Flujo del casquete",
+        "shape": "Superficie",
+        "paraboloid": "Casquete paraboloide",
+        "dome": "Cúpula",
+        "cone": "Cono"
       },
       "heading": "Un borde, dos superficies"
     }

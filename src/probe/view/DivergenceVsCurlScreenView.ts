@@ -1,11 +1,12 @@
 import { Range } from "scenerystack/dot";
+import { Node } from "scenerystack/scenery";
 import type { ScreenViewOptions } from "scenerystack/sim";
-import { drawField, midpoint } from "../../common/FieldPlot.js";
+import { canvasText, drawField, fieldChoices, midpoint } from "../../common/FieldPlot.js";
 import {
   addPointDrag,
   arrow,
   checkbox,
-  choice,
+  comboBox,
   computed,
   format,
   LabView,
@@ -15,7 +16,7 @@ import {
   plotLabel,
   slider,
 } from "../../common/LabView.js";
-import { probeTotals, squareEdges } from "../../common/model/VectorMath.js";
+import { curl, divergence, fieldLabel, fields, probeTotals, squareEdges } from "../../common/model/VectorMath.js";
 import { StringManager } from "../../i18n/StringManager.js";
 import type { DivergenceVsCurlModel } from "../model/DivergenceVsCurlModel.js";
 
@@ -24,17 +25,7 @@ export class DivergenceVsCurlScreenView extends LabView {
     const manager = StringManager.getInstance();
     const { controls: s, headingStringProperty, screenSummary } = manager.getDivergenceVsCurlA11yStrings();
     const { fieldProperty, xProperty, yProperty, sizeProperty, circulationProperty, properties } = model;
-    const fieldNames = {
-      source: s.sourceStringProperty,
-      rotation: s.rotationStringProperty,
-      shear: s.shearStringProperty,
-    };
-    const formulas = { source: "F = (x, y)", rotation: "F = (−y, x)", shear: "F = (y, 0)" };
-    const fieldName = computed(
-      [fieldProperty, ...Object.values(fieldNames)],
-      () => fieldNames[fieldProperty.value].value,
-    );
-    const formula = computed([fieldProperty], () => formulas[fieldProperty.value]);
+    const formula = computed([fieldProperty], () => `F = ${fieldLabel(fieldProperty.value)}`);
     const edges = () => squareEdges([xProperty.value, yProperty.value], sizeProperty.value);
     const totals = () => probeTotals(fieldProperty.value, edges());
     const totalsText = computed(properties, () => {
@@ -44,7 +35,12 @@ export class DivergenceVsCurlScreenView extends LabView {
     const normalized = computed(properties, () => {
       const area = sizeProperty.value ** 2;
       const { netFlux, netCirculation } = totals();
-      return `∇ · F = ${format(netFlux / area)}      (∇ × F)z = ${format(netCirculation / area)}`;
+      return `∮ F · n ds / A = ${format(netFlux / area, 3)}      ∮ F · dr / A = ${format(netCirculation / area, 3)}`;
+    });
+    // What the ratios approach as the square shrinks onto its centre.
+    const exact = computed(properties, () => {
+      const at = [xProperty.value, yProperty.value] as const;
+      return `${s.limitStringProperty.value}  ∇ · F = ${format(divergence(fieldProperty.value, at), 3)}   (∇ × F)<sub>z</sub> = ${format(curl(fieldProperty.value, at), 3)}`;
     });
     const sides = computed(properties, () => {
       const result = totals();
@@ -53,9 +49,9 @@ export class DivergenceVsCurlScreenView extends LabView {
       return `${formulaSymbol} ①–④: ${values.map((value) => format(value)).join(" / ")}`;
     });
     const details = computed(
-      [formula, fieldName, totalsText, normalized, sides, xProperty, yProperty, sizeProperty],
+      [formula, totalsText, normalized, exact, sides, xProperty, yProperty, sizeProperty],
       () =>
-        `${fieldName.value}. ${formula.value}. (x, y) = (${format(xProperty.value)}, ${format(yProperty.value)}). A = ${format(sizeProperty.value ** 2)}. ${totalsText.value}. ${normalized.value}. ${sides.value}.`,
+        `${canvasText(formula.value)}. (x, y) = (${format(xProperty.value)}, ${format(yProperty.value)}). A = ${format(sizeProperty.value ** 2)}. ${totalsText.value}. ${normalized.value}. ${exact.value.replace(/<[^>]+>/g, "")}. ${sides.value}.`,
     );
     const plane = new Plane(new Range(-2.55, 2.55), new Range(-2.55, 2.55));
     const plot = new PlotCanvas(properties, (context, colors) => {
@@ -72,13 +68,16 @@ export class DivergenceVsCurlScreenView extends LabView {
         const nx = ty;
         const ny = -tx;
         const circulation = circulationProperty.value;
+        const contribution = (circulation ? result.circulation : result.flux)[index] ?? 0;
+        // Each arrow's length is the edge's contribution per unit length, on a shared scale.
+        const largest = Math.max(1e-9, ...(circulation ? result.circulation : result.flux).map(Math.abs));
+        const reach = (0.4 * contribution) / largest;
         const tail = plane.project([u + 0.1 * nx, v + 0.1 * ny]);
         const tip = plane.project([
-          u + 0.1 * nx + 0.26 * (circulation ? tx : nx),
-          v + 0.1 * ny + 0.26 * (circulation ? ty : ny),
+          u + 0.1 * nx + reach * (circulation ? tx : nx),
+          v + 0.1 * ny + reach * (circulation ? ty : ny),
         ]);
         arrow(context, tail, tip, colors.alternate);
-        const contribution = (circulation ? result.circulation : result.flux)[index] ?? 0;
         const caption = ["①", "②", "③", "④"][index];
         plotLabel(
           context,
@@ -87,26 +86,25 @@ export class DivergenceVsCurlScreenView extends LabView {
           colors.ink,
         );
       });
-      plotLabel(context, formula.value, [16, 25], colors.ink);
+      plotLabel(context, canvasText(formula.value), [16, 25], colors.ink);
     });
     addPointDrag(plot, plane, xProperty, yProperty, s.dragTargetStringProperty);
+    const listParent = new Node();
     super(
       {
         title: headingStringProperty,
         summary: screenSummary,
         details,
         plot,
+        listParent,
         controls: [
-          choice(s.fieldStringProperty, fieldName, () => {
-            const next = { source: "rotation", rotation: "shear", shear: "source" } as const;
-            fieldProperty.value = next[fieldProperty.value];
-          }),
+          comboBox(fieldProperty, fieldChoices(fields), listParent, s.fieldStringProperty),
           slider(s.xStringProperty, xProperty, 0.05),
           slider(s.yStringProperty, yProperty, 0.05),
           slider(s.sizeStringProperty, sizeProperty, 0.1),
           checkbox(s.circulationStringProperty, circulationProperty),
         ],
-        readouts: [formula, totalsText, normalized, sides],
+        readouts: [formula, totalsText, normalized, exact, sides],
         reset: () => model.reset(),
       },
       options,

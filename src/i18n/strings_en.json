@@ -10,86 +10,94 @@
   "a11y": {
     "work": {
       "screenSummary": {
-        "playArea": "A segment and an upper semicircle connect the same two points.",
-        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
-        "interactionHint": "Advance both markers and compare their accumulated work."
+        "playArea": "Two paths from A to B in a vector field: the straight segment and a chosen path, each traced up to the progress t.",
+        "controlArea": "Choose the field and the second path, drag A or B, and move along the paths.",
+        "interactionHint": "Find a field where the two paths take different work. What does the loop integral tell you?"
       },
       "controls": {
         "field": "Vector field",
-        "gradient": "Gradient field",
-        "rotation": "Rotational field",
         "progress": "Path progress",
-        "reverseSegment": "Reverse straight path",
-        "reverseArc": "Reverse semicircle"
+        "path": "Second path",
+        "segment": "Straight segment",
+        "upperArc": "Half circle to the left",
+        "lowerArc": "Half circle to the right",
+        "detour": "Up, across and down",
+        "loop": "Out along 1, back along 2",
+        "conservative": "∇ × F = 0 everywhere, so the work depends only on A and B.",
+        "notConservative": "∇ × F ≠ 0 here, so the work can depend on the path."
       },
       "heading": "Same Destination, Different Work"
     },
     "gate": {
       "screenSummary": {
-        "playArea": "A movable gate lies in a two-dimensional vector field.",
-        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
-        "interactionHint": "Rotate the gate, then flip its normal and compare the signed flux."
+        "playArea": "A movable gate in a vector field, with its normal n and arrows showing F · n along the gate.",
+        "controlArea": "Choose the field, move and turn the gate, change its length, or flip its normal.",
+        "interactionHint": "Where along the gate does the field cross it most? Turn the gate until the flux is zero."
       },
       "controls": {
         "field": "Vector field",
-        "uniform": "Uniform field",
-        "source": "Source field",
         "dragTarget": "Gate center",
         "x": "Gate center x",
         "y": "Gate center y",
         "angle": "Gate angle",
-        "flipped": "Flip the normal"
+        "flipped": "Flip the normal",
+        "length": "Gate length"
       },
       "heading": "Flux Through a Gate"
     },
     "probe": {
       "screenSummary": {
-        "playArea": "A square probe shows signed contributions from its four sides.",
-        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
-        "interactionHint": "Compare net flux and circulation as you change the field or probe size."
+        "playArea": "A square probe in a vector field, with each side's contribution drawn to scale.",
+        "controlArea": "Choose the field, move the probe, shrink it, and switch between flux and circulation.",
+        "interactionHint": "Shrink the square in a field whose divergence changes. Which numbers do the ratios approach?"
       },
       "controls": {
         "field": "Vector field",
-        "source": "Source field",
-        "rotation": "Rotational field",
-        "shear": "Shear field",
         "dragTarget": "Field probe",
         "x": "Probe x",
         "y": "Probe y",
         "size": "Probe side length",
-        "circulation": "Show circulation on edges"
+        "circulation": "Show circulation on edges",
+        "limit": "At the centre:"
       },
       "heading": "Divergence vs. Curl"
     },
     "green": {
       "screenSummary": {
-        "playArea": "A tiled region shows how opposing circulations on common edges cancel.",
-        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
-        "interactionHint": "Advance through the stages and compare the two totals."
+        "playArea": "A tiled region in a vector field, with each cell's circulation, then the shared edges cancelling, then the outer boundary.",
+        "controlArea": "Choose the field and region, set the number of cells, and step through the stages.",
+        "interactionHint": "Compare the boundary circulation with the integral of the curl. Why do the inner edges not count?"
       },
       "controls": {
         "lShape": "Use an L-shaped region",
         "divisions": "Cells per unit",
-        "stage": "Cancellation stage",
         "flipped": "Reverse orientation",
         "cells": "Cell circulations",
         "pairs": "Cancel shared pairs",
-        "boundary": "Outer boundary"
+        "boundary": "Outer boundary",
+        "field": "Vector field",
+        "back": "Back",
+        "next": "Next",
+        "cellSum": "Sum of cell circulations"
       },
       "heading": "Green’s Theorem by Cancellation"
     },
     "stokes": {
       "screenSummary": {
-        "playArea": "A disk and a curved cap share an oriented circular rim.",
-        "controlArea": "Use the sliders and buttons to change the example. Reset All restores the starting state.",
-        "interactionHint": "Change the cap height, then reverse the rim direction and the surface normal together."
+        "playArea": "A disk and a chosen cap share an oriented circular rim; curl arrows stand on the cap.",
+        "controlArea": "Choose the surface, change its height, turn the view, or reverse the orientation.",
+        "interactionHint": "Change the surface's shape and height. Does the flux of the curl change?"
       },
       "controls": {
         "height": "Cap height",
         "rotation": "View angle",
         "flipped": "Reverse orientation",
         "diskFlux": "Disk flux",
-        "capFlux": "Cap flux"
+        "capFlux": "Cap flux",
+        "shape": "Surface",
+        "paraboloid": "Paraboloid cap",
+        "dome": "Dome",
+        "cone": "Cone"
       },
       "heading": "One Rim, Two Surfaces"
     }

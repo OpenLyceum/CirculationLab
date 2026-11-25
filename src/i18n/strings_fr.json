@@ -10,86 +10,94 @@
   "a11y": {
     "work": {
       "screenSummary": {
-        "playArea": "Un segment et un demi-cercle supérieur relient les deux mêmes points.",
-        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
-        "interactionHint": "Avancez les deux marqueurs et comparez le travail cumulé."
+        "playArea": "Deux chemins de A à B dans un champ de vecteurs : le segment droit et un chemin choisi, tracés jusqu’à l’avancement t.",
+        "controlArea": "Choisissez le champ et le second chemin, faites glisser A ou B, et avancez le long des chemins.",
+        "interactionHint": "Trouvez un champ où les deux chemins donnent des travaux différents. Que dit l’intégrale sur la boucle ?"
       },
       "controls": {
         "field": "Champ vectoriel",
-        "gradient": "Champ de gradient",
-        "rotation": "Champ de rotation",
         "progress": "Progression sur le trajet",
-        "reverseSegment": "Inverser le segment",
-        "reverseArc": "Inverser le demi-cercle"
+        "path": "Second chemin",
+        "segment": "Segment droit",
+        "upperArc": "Demi-cercle à gauche",
+        "lowerArc": "Demi-cercle à droite",
+        "detour": "Monter, traverser, descendre",
+        "loop": "Aller par 1, retour par 2",
+        "conservative": "∇ × F = 0 partout : le travail ne dépend que de A et B.",
+        "notConservative": "∇ × F ≠ 0 ici : le travail peut dépendre du chemin."
       },
       "heading": "Même destination, travail différent"
     },
     "gate": {
       "screenSummary": {
-        "playArea": "Un segment mobile est plongé dans un champ vectoriel plan.",
-        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
-        "interactionHint": "Tournez le segment, inversez sa normale et comparez le flux signé."
+        "playArea": "Une porte mobile dans un champ de vecteurs, avec sa normale n et des flèches montrant F · n le long de la porte.",
+        "controlArea": "Choisissez le champ, déplacez et tournez la porte, changez sa longueur ou inversez sa normale.",
+        "interactionHint": "Où le champ traverse-t-il le plus la porte ? Tournez-la jusqu’à un flux nul."
       },
       "controls": {
         "field": "Champ vectoriel",
-        "uniform": "Champ uniforme",
-        "source": "Champ de source",
         "dragTarget": "Centre du segment",
         "x": "Abscisse du centre",
         "y": "Ordonnée du centre",
         "angle": "Angle du segment",
-        "flipped": "Inverser la normale"
+        "flipped": "Inverser la normale",
+        "length": "Longueur de la porte"
       },
       "heading": "Flux à travers un segment"
     },
     "probe": {
       "screenSummary": {
-        "playArea": "Une sonde carrée montre les contributions signées de ses quatre côtés.",
-        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
-        "interactionHint": "Comparez le flux net et la circulation en variant le champ ou la taille."
+        "playArea": "Une sonde carrée dans un champ de vecteurs, avec la contribution de chaque côté à l’échelle.",
+        "controlArea": "Choisissez le champ, déplacez la sonde, réduisez-la et passez du flux à la circulation.",
+        "interactionHint": "Réduisez le carré dans un champ dont la divergence varie. Vers quels nombres tendent les rapports ?"
       },
       "controls": {
         "field": "Champ vectoriel",
-        "source": "Champ de source",
-        "rotation": "Champ de rotation",
-        "shear": "Champ de cisaillement",
         "dragTarget": "Sonde du champ",
         "x": "Abscisse de la sonde",
         "y": "Ordonnée de la sonde",
         "size": "Côté du carré",
-        "circulation": "Afficher la circulation sur les côtés"
+        "circulation": "Afficher la circulation sur les côtés",
+        "limit": "Au centre :"
       },
       "heading": "Divergence et rotationnel"
     },
     "green": {
       "screenSummary": {
-        "playArea": "Un domaine pavé montre comment les circulations opposées s’annulent sur les côtés communs.",
-        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
-        "interactionHint": "Parcourez les étapes et comparez les deux totaux."
+        "playArea": "Une région pavée dans un champ de vecteurs : la circulation de chaque cellule, puis l’annulation des côtés partagés, puis le bord extérieur.",
+        "controlArea": "Choisissez le champ et la région, réglez le nombre de cellules et parcourez les étapes.",
+        "interactionHint": "Comparez la circulation sur le bord et l’intégrale du rotationnel. Pourquoi les côtés intérieurs ne comptent-ils pas ?"
       },
       "controls": {
         "lShape": "Utiliser un domaine en L",
         "divisions": "Cellules par unité",
-        "stage": "Étape d’annulation",
         "flipped": "Inverser l’orientation",
         "cells": "Circulations des cellules",
         "pairs": "Annulation des côtés communs",
-        "boundary": "Bord extérieur"
+        "boundary": "Bord extérieur",
+        "field": "Champ de vecteurs",
+        "back": "Retour",
+        "next": "Suivant",
+        "cellSum": "Somme des circulations des cellules"
       },
       "heading": "Le théorème de Green par annulation"
     },
     "stokes": {
       "screenSummary": {
-        "playArea": "Un disque et une calotte courbe partagent un bord circulaire orienté.",
-        "controlArea": "Utilisez les curseurs et les boutons pour modifier l’exemple. Réinitialiser rétablit l’état initial.",
-        "interactionHint": "Variez la hauteur, puis inversez ensemble le sens du bord et la normale."
+        "playArea": "Un disque et une calotte choisie partagent un bord circulaire orienté ; des flèches du rotationnel se dressent sur la calotte.",
+        "controlArea": "Choisissez la surface, changez sa hauteur, tournez la vue ou inversez l’orientation.",
+        "interactionHint": "Changez la forme et la hauteur de la surface. Le flux du rotationnel change-t-il ?"
       },
       "controls": {
         "height": "Hauteur de la calotte",
         "rotation": "Angle de vue",
         "flipped": "Inverser l’orientation",
         "diskFlux": "Flux du disque",
-        "capFlux": "Flux de la calotte"
+        "capFlux": "Flux de la calotte",
+        "shape": "Surface",
+        "paraboloid": "Calotte paraboloïde",
+        "dome": "Dôme",
+        "cone": "Cône"
       },
       "heading": "Un bord, deux surfaces"
     }
